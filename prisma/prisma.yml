@@ -1,0 +1,14 @@
+# the HTTP endpoint for prisma
+#endpoint: ''
+
+# points to the file that contains datamodel
+datamodel: dataModel.prisma
+
+# specifies language and location for the genreated prisma client
+generate:
+  - generator: javascript-client
+    output: ../src/generated/prisma-client
+
+# hooks: 
+#   post-deploy:
+#     - prisma generate

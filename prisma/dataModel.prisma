@@ -1,0 +1,18 @@
+type ToDo {
+    id: ID! @unique
+    createdAt: DateTime!
+    parent: ToDo @relation(name: "ParentToChild")
+    todo: String!
+    completed: Boolean!
+    createdBy: User!
+}
+
+type User {
+    id: ID! @unique
+    createdAt: DateTime!
+    firstName: String!
+    lastName: String!
+    email: String! @unique
+    password: String!
+    todos: [ToDo!]!
+}

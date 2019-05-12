@@ -1,0 +1,34 @@
+type Query {
+    todos(filter: String): [ToDo!]!
+    todo(id: ID!): ToDo
+    todoChildren(parent: ID!): [ToDo!]
+}
+
+type Mutation {
+    createToDo(todo: String!, completed: Boolean!, parent: String): ToDo!,
+    updateToDo(id: ID!, todo: String!, completed: Boolean!): ToDo,
+    deleteToDo(id: ID!): ToDo
+    signup(email: String!, password: String!, firstName: String!, lastName: String!): AuthPayload
+    login(email: String!, password: String!): AuthPayload
+}
+
+type ToDo {
+    id: ID!
+    todo: String!
+    completed: Boolean!
+    createdBy: User!
+    parent: ToDo
+    children: [ToDo!]
+}
+
+type AuthPayload {
+    token: String
+    user: User
+}
+
+type User {
+    id: ID!
+    firstName: String!
+    email: String!
+    todos: [ToDo!]!
+}
